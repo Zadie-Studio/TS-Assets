@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image Gallery</title>
+    <title>TattooStudio Pro Brand Images</title>
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -32,11 +32,18 @@
         .gallery-item:hover {
             transform: translateY(-5px);
         }
+        .gallery-item a {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+        }
         .gallery-item img {
             width: 100%;
-            height: 200px;
-            object-fit: cover;
+            height: auto;
+            object-fit: contain;
             display: block;
+            background-color: #f9f9f9;
+            padding: 10px 0;
         }
         .image-info {
             padding: 10px;
@@ -57,14 +64,11 @@
                 grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
                 grid-gap: 10px;
             }
-            .gallery-item img {
-                height: 150px;
-            }
         }
     </style>
 </head>
 <body>
-    <h1>TattooStudio Brand Images</h1>
+    <h1>TattooStudio Pro Brand Images</h1>
     <div id="gallery" class="gallery">
         <div id="loading" class="loading">Loading images...</div>
     </div>
@@ -116,6 +120,11 @@
                         const galleryItem = document.createElement('div');
                         galleryItem.className = 'gallery-item';
                         
+                        const link = document.createElement('a');
+                        link.href = `${baseUrl}${imagesPath}${file.name}`;
+                        link.target = '_blank';
+                        link.rel = 'noopener';
+                        
                         const img = document.createElement('img');
                         img.src = `${baseUrl}${imagesPath}${file.name}`;
                         img.alt = file.name;
@@ -129,8 +138,9 @@
                         nameEl.textContent = file.name;
                         
                         infoDiv.appendChild(nameEl);
-                        galleryItem.appendChild(img);
-                        galleryItem.appendChild(infoDiv);
+                        link.appendChild(img);
+                        link.appendChild(infoDiv);
+                        galleryItem.appendChild(link);
                         
                         galleryEl.appendChild(galleryItem);
                     });
@@ -234,6 +244,11 @@
                     const galleryItem = document.createElement('div');
                     galleryItem.className = 'gallery-item';
                     
+                    const link = document.createElement('a');
+                    link.href = src;
+                    link.target = '_blank';
+                    link.rel = 'noopener';
+                    
                     const imgEl = document.createElement('img');
                     imgEl.src = src;
                     imgEl.alt = fileName;
@@ -246,8 +261,9 @@
                     nameEl.textContent = fileName;
                     
                     infoDiv.appendChild(nameEl);
-                    galleryItem.appendChild(imgEl);
-                    galleryItem.appendChild(infoDiv);
+                    link.appendChild(imgEl);
+                    link.appendChild(infoDiv);
+                    galleryItem.appendChild(link);
                     
                     galleryEl.appendChild(galleryItem);
                 };
