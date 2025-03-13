@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Gallery</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            grid-gap: 20px;
+            margin-top: 30px;
+        }
+        .gallery-item {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            background-color: white;
+            transition: transform 0.3s ease;
+        }
+        .gallery-item:hover {
+            transform: translateY(-5px);
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+        .image-info {
+            padding: 10px;
+        }
+        .image-name {
+            font-weight: 500;
+            margin: 0;
+            word-break: break-all;
+        }
+        .loading {
+            text-align: center;
+            padding: 40px;
+            font-size: 18px;
+            color: #666;
+        }
+        @media (max-width: 600px) {
+            .gallery {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+                grid-gap: 10px;
+            }
+            .gallery-item img {
+                height: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Image Gallery</h1>
+    <div id="gallery" class="gallery">
+        <div id="loading" class="loading">Loading images...</div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const galleryEl = document.getElementById('gallery');
+            const loadingEl = document.getElementById('loading');
+            const baseUrl = window.location.href.replace(/\/[^\/]*$/, '');
+            const imagesPath = '/images/';
+            
+            // Function to fetch and display images
+            async function loadImageGallery() {
+                try {
+                    // GitHub API endpoint for the repository contents
+                    const repoInfo = extractRepoInfo(window.location.href);
+                    if (!repoInfo) {
+                        displayError("Couldn't determine repository information from URL");
+                        return;
+                    }
+                    
+                    const apiUrl = `https://api.github.com/repos/${repoInfo.owner}/${repoInfo.repo}/contents/images`;
+                    
+                    // Fetch the directory contents
+                    const response = await fetch(apiUrl);
+                    
+                    if (!response.ok) {
+                        throw new Error(`GitHub API returned ${response.status}: ${response.statusText}`);
+                    }
+                    
+                    const data = await response.json();
+                    
+                    // Filter for image files
+                    const imageFiles = data.filter(file => 
+                        file.type === 'file' && 
+                        /\.(jpe?g|png|gif|webp|svg|bmp)$/i.test(file.name)
+                    );
+                    
+                    if (imageFiles.length === 0) {
+                        galleryEl.innerHTML = '<div class="loading">No images found in the /images directory.</div>';
+                        return;
+                    }
+                    
+                    // Remove loading message
+                    loadingEl.remove();
+                    
+                    // Create gallery items for each image
+                    imageFiles.forEach(file => {
+                        const galleryItem = document.createElement('div');
+                        galleryItem.className = 'gallery-item';
+                        
+                        const img = document.createElement('img');
+                        img.src = `${baseUrl}${imagesPath}${file.name}`;
+                        img.alt = file.name;
+                        img.loading = 'lazy';
+                        
+                        const infoDiv = document.createElement('div');
+                        infoDiv.className = 'image-info';
+                        
+                        const nameEl = document.createElement('p');
+                        nameEl.className = 'image-name';
+                        nameEl.textContent = file.name;
+                        
+                        infoDiv.appendChild(nameEl);
+                        galleryItem.appendChild(img);
+                        galleryItem.appendChild(infoDiv);
+                        
+                        galleryEl.appendChild(galleryItem);
+                    });
+                    
+                } catch (error) {
+                    displayError(`Error loading images: ${error.message}`);
+                }
+            }
+            
+            // Function to extract owner and repo from GitHub Pages URL
+            function extractRepoInfo(url) {
+                // For GitHub Pages URLs like https://username.github.io/repo-name/
+                const githubIoPattern = /https?:\/\/([^.]+)\.github\.io\/([^\/]+)/;
+                // For custom domain with GitHub Pages
+                const customDomainPattern = /https?:\/\/[^\/]+\/([^\/]+)\/([^\/]+)/;
+                
+                let match = url.match(githubIoPattern);
+                
+                if (match) {
+                    return {
+                        owner: match[1],
+                        repo: match[2]
+                    };
+                }
+                
+                match = url.match(customDomainPattern);
+                
+                if (match) {
+                    return {
+                        owner: match[1],
+                        repo: match[2]
+                    };
+                }
+                
+                // Fallback to raw fetch
+                return null;
+            }
+            
+            // Function to display error message
+            function displayError(message) {
+                galleryEl.innerHTML = `<div class="loading">${message}. Try opening the browser console for more details.</div>`;
+                console.error(message);
+            }
+            
+            // Alternative approach using direct file listing (for when GitHub API doesn't work)
+            function fallbackToDirectoryListing() {
+                galleryEl.innerHTML = `
+                    <div class="loading">
+                        GitHub API approach failed. Using direct directory access.<br>
+                        If no images appear, ensure your /images directory exists and contains image files.
+                    </div>
+                `;
+                
+                // Remove loading after 3 seconds
+                setTimeout(() => {
+                    const loadingMsg = document.querySelector('.loading');
+                    if (loadingMsg) loadingMsg.remove();
+                }, 3000);
+                
+                // Try to load images directly
+                const imgExtensions = ['jpg', 'jpeg', 'png', 'gif', 'webp', 'svg', 'bmp'];
+                const baseImgPath = `${baseUrl}${imagesPath}`;
+                
+                // This is a fallback approach with some predefined image names to try
+                // Not ideal but can help in some cases
+                const commonImgNames = [
+                    'image', 'photo', 'picture', 'img', 'banner', 'logo', 'icon',
+                    'background', 'header', 'profile', 'avatar', 'product'
+                ];
+                
+                // Generate possible combinations of names and extensions
+                for (let i = 1; i <= 20; i++) {
+                    // Try numbered images
+                    imgExtensions.forEach(ext => {
+                        createImageElement(`${baseImgPath}${i}.${ext}`);
+                    });
+                    
+                    // Try common names with numbers
+                    commonImgNames.forEach(name => {
+                        imgExtensions.forEach(ext => {
+                            createImageElement(`${baseImgPath}${name}${i}.${ext}`);
+                        });
+                    });
+                }
+                
+                // Try common names without numbers
+                commonImgNames.forEach(name => {
+                    imgExtensions.forEach(ext => {
+                        createImageElement(`${baseImgPath}${name}.${ext}`);
+                    });
+                });
+            }
+            
+            // Create image element for fallback method
+            function createImageElement(src) {
+                const img = new Image();
+                img.onload = function() {
+                    // Image exists, add it to gallery
+                    const fileName = src.split('/').pop();
+                    
+                    const galleryItem = document.createElement('div');
+                    galleryItem.className = 'gallery-item';
+                    
+                    const imgEl = document.createElement('img');
+                    imgEl.src = src;
+                    imgEl.alt = fileName;
+                    
+                    const infoDiv = document.createElement('div');
+                    infoDiv.className = 'image-info';
+                    
+                    const nameEl = document.createElement('p');
+                    nameEl.className = 'image-name';
+                    nameEl.textContent = fileName;
+                    
+                    infoDiv.appendChild(nameEl);
+                    galleryItem.appendChild(imgEl);
+                    galleryItem.appendChild(infoDiv);
+                    
+                    galleryEl.appendChild(galleryItem);
+                };
+                img.onerror = function() {
+                    // Image doesn't exist, do nothing
+                };
+                img.src = src;
+            }
+            
+            // Start by trying the GitHub API approach
+            loadImageGallery().catch(error => {
+                console.error('GitHub API approach failed:', error);
+                // Fall back to directory listing
+                fallbackToDirectoryListing();
+            });
+        });
+    </script>
+</body>
+</html>
