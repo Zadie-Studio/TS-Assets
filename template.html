@@ -1,124 +1,337 @@
 <!doctype html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="{{DESCRIPTION}}">
-    <meta name="author" content="TattooStudio">
-    <title>{{TITLE}}</title>
-    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family={{FONT_FAMILY}}:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/main.css">
-    <link rel="stylesheet" href="assets/css/responsive.css">
-    <style>
-        :root { 
-            --brand-color: {{BRAND_COLOR}}; 
-            --brand-color-light: {{BRAND_COLOR_LIGHT}}; 
-            --heading-font: "{{HEADING_FONT}}"; 
-        }
-        h1, h2, h3, h4, h5, h6 { font-family: var(--heading-font), sans-serif !important; }
-        .navbar-brand .artist-name { font-family: var(--heading-font), sans-serif; color: var(--brand-color); }
-        .hero-content h1 { color: var(--brand-color); }
-        .about-content h2 { color: var(--brand-color); }
-        .section-heading h2 { color: var(--brand-color); }
-        .social-link a { background: var(--brand-color); }
-        .social-link a:hover { background: var(--brand-color-light); }
-    </style>
-</head>
-<body data-spy="scroll" data-target="#navmenu" data-offset="70">
-    <div class="site-preloader-wrap"><div class="spinner"></div></div>
-    
-    <header id="header" class="header-section">
-        <div class="container">
-            <nav class="navbar">
-                <div class="navbar-brand">
-                    <div class="artist-name">{{ARTIST_NAME}}</div>
-                    <div class="artist-location">Tattoo Artist in {{CITY_STATE}}</div>
-                </div>
-                <div class="navbar-center">
-                    <div id="navmenu" class="mainmenu">
-                        <ul class="nav">
-                            <li><a data-scroll class="nav-link active" href="#home">Home</a></li>
-                            <li><a data-scroll class="nav-link" href="#about">About</a></li>
-                            <li><a data-scroll class="nav-link" href="#portfolio">Portfolio</a></li>
-                            <li><a data-scroll class="nav-link" href="#contact">Contact</a></li>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="{{META_DESCRIPTION}}">
+        <meta name="author" content="{{AUTHOR}}">
+       
+        <title>{{ARTIST_NAME}} - Tattoo Artist in {{CITY_STATE}}</title>
+        
+		    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
+		
+		<!-- Google Fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Oswald:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Lato:wght@400;500;600;700&family=Raleway:wght@400;500;600;700&family=Open+Sans:wght@400;500;600;700&family=Arvo:wght@400;700&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+		
+		<!-- Font Awesome CSS -->
+        <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+        <!-- Themify Icons CSS -->
+        <link rel="stylesheet" href="assets/css/themify-icons.css">
+        <!-- Elegant Font Icons CSS -->
+        <link rel="stylesheet" href="assets/css/elegant-font-icons.css">
+        <!-- Elegant Line Icons CSS -->
+        <link rel="stylesheet" href="assets/css/elegant-line-icons.css">
+		<!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+        <!-- Venobox CSS -->
+        <link rel="stylesheet" href="assets/css/venobox/venobox.css">
+        <!-- Slicknav CSS -->
+        <link rel="stylesheet" href="assets/css/slicknav.min.css">
+        <!-- animate CSS -->
+        <link rel="stylesheet" href="assets/css/animate.min.css">
+        <!-- simpletextrotator CSS -->
+        <link rel="stylesheet" href="assets/css/simpletextrotator.css">
+		<!-- OWL-Carousel CSS -->
+        <link rel="stylesheet" href="assets/css/owl.carousel.css">
+		<!-- Main CSS -->
+        <link rel="stylesheet" href="assets/css/main.css">
+		<!-- Responsive CSS -->
+        <link rel="stylesheet" href="assets/css/responsive.css">
+
+        <script src="assets/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+        
+        <style>
+            :root {
+                --brand-color: {{BRAND_COLOR}};
+                --brand-color-light: {{BRAND_COLOR_LIGHT}};
+                --heading-font: '{{HEADING_FONT}}', sans-serif;
+            }
+            
+            h1, h2, h3, h4, h5, h6 {
+                font-family: var(--heading-font);
+            }
+            
+            .default-btn, .btn-primary {
+                background-color: var(--brand-color);
+                border-color: var(--brand-color);
+            }
+            
+            .default-btn:hover, .btn-primary:hover {
+                background-color: var(--brand-color-light);
+                border-color: var(--brand-color-light);
+            }
+            
+            .hero-section {
+                background-color: var(--brand-color);
+            }
+            
+            .section-heading h2 {
+                color: var(--brand-color);
+            }
+        </style>
+    </head>
+    <body data-spy="scroll" data-target="#navmenu" data-offset="70">        
+        <div class="site-preloader-wrap">
+            <div class="spinner"></div>
+        </div><!-- Preloader -->
+        
+        <header id="header" class="header-section">
+            <div class="container">
+                <nav class="navbar">
+                    <div class="navbar-brand">
+                        <div class="artist-name">{{ARTIST_NAME}}</div>
+                        <div class="artist-location">Tattoo Artist in {{CITY_STATE}}</div>
+                    </div>
+                    
+                    <div class="navbar-center">
+                        <div id="navmenu" class="mainmenu">
+                            <ul class="nav">
+                                <li><a data-scroll class="nav-link active" href="#home">Home <span class="sr-only">(current)</span></a></li>
+                                <li><a data-scroll class="nav-link" href="#about">About</a></li>
+                                <li><a data-scroll class="nav-link" href="#portfolio">Portfolio</a></li>
+                                <li><a data-scroll class="nav-link" href="#aftercare">Aftercare</a></li>
+                                <li><a data-scroll class="nav-link" href="#contact">Contact</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="navbar-right">
+                        <ul class="nav-social">
+                            {{NAV_SOCIAL_LINKS}}
+                        </ul>
+                        <div class="hamburger-menu">
+                            <div class="hamburger-icon">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+            
+            <!-- Mobile Navigation Overlay -->
+            <div class="mobile-nav-overlay">
+                <div class="mobile-nav-content">
+                    <ul class="mobile-nav">
+                        <li><a data-scroll class="mobile-nav-link" href="#home">Home</a></li>
+                        <li><a data-scroll class="mobile-nav-link" href="#about">About</a></li>
+                        <li><a data-scroll class="mobile-nav-link" href="#portfolio">Portfolio</a></li>
+                        <li><a data-scroll class="mobile-nav-link" href="#aftercare">Aftercare</a></li>
+                        <li><a data-scroll class="mobile-nav-link" href="#contact">Contact</a></li>
+                    </ul>
+                    
+                    <!-- Mobile Social Icons -->
+                    <div class="mobile-social-icons">
+                        <ul class="mobile-social">
+                            {{MOBILE_SOCIAL_LINKS}}
                         </ul>
                     </div>
                 </div>
-                <div class="navbar-right">
-                    <ul class="nav-social">
-                        {{EMAIL_LINK}}
-                        {{FACEBOOK_LINK}}
-                        {{X_LINK}}
-                        {{INSTAGRAM_LINK}}
-                    </ul>
-                </div>
-            </nav>
-        </div>
-    </header>
-    
-    <section id="home" class="hero-area">
-        <div class="hero-bg" style="background-image: url('img/hero-background.jpg');"></div>
-        <div class="container">
-            <div class="hero-content text-center">
-                <h1>{{HERO_TITLE}}</h1>
-                <p>{{HERO_SUBTITLE}}</p>
             </div>
-        </div>
-    </section>
-    
-    <section id="about" class="about-area">
-        <div class="container">
-            <div class="about-content text-center">
-                <h2>{{ABOUT_TITLE}}</h2>
-                <p>{{ABOUT_TEXT}}</p>
-            </div>
-        </div>
-    </section>
-    
-    <section id="portfolio" class="portfolio-area">
-        <div class="container">
-            <div class="section-heading text-center">
-                <h2>Portfolio</h2>
-            </div>
-            <div class="row" id="portfolio-grid">
-                <!-- Portfolio images will be loaded dynamically -->
-            </div>
-        </div>
-    </section>
-    
-    <section id="contact" class="contact-area">
-        <div class="container">
-            <div class="section-heading text-center">
-                <h2>Contact</h2>
-            </div>
-            <div class="social-links text-center">
-                <ul class="social-link">
-                    {{FACEBOOK_SOCIAL}}
-                    {{X_SOCIAL}}
-                    {{INSTAGRAM_SOCIAL}}
-                </ul>
-            </div>
-        </div>
-    </section>
-    
-    <footer class="footer-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-12 text-center">
-                    <p class="copyright-text">&copy; {{CURRENT_YEAR}} {{ARTIST_NAME}}. All Rights Reserved.</p>
-                    <p class="powered-by">Powered by <a href="https://tattoostudiopro.com" target="_blank" rel="noopener">Tattoo Studio Pro</a></p>
+		</header> <!-- Header -->
+		
+        <section id="home" class="section hero-section d-flex align-items-center">
+            <div class="container">
+                <div class="hero-content text-center wow fadeInUp" data-wow-duration="1s">
+                    <h1>{{HERO_TITLE}}</h1>
+                    <p>{{HERO_SUBTITLE}}</p>
                 </div>
             </div>
-        </div>
-    </footer>
-    
-    <script src="assets/js/vendor/jquery-1.12.4.min.js"></script>
-    <script src="assets/js/vendor/bootstrap.min.js"></script>
-    <script src="assets/js/main.js"></script>
-</body>
-</html> 
+            <div class="down-arrow">
+                <a data-scroll href="#about" class="arrow-animated"><i class="ti-arrow-down"></i></a>
+            </div>
+        </section><!-- hero-section -->
+        
+        <section id="about" class="about-section bg-dark">
+            <div class="container-fluid">
+                <div class="row about-wrap">
+                    <div class="col-md-6">
+                        <div class="about-content pdl-80 wow fadeInLeft" data-wow-duration="1s">
+                            <div class="section-heading mb-20">
+                               <h2>{{ABOUT_TITLE}}</h2>
+                            </div>
+                            <p>{{ABOUT_TEXT}}</p>
+                            <a href="#contact" class="default-btn">Get in touch</a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 d-none d-md-block">
+                        <div class="artist-portrait-container" style="padding: 40px;">
+                            <img src="img/artist-portrait.jpg" alt="{{ARTIST_NAME}}" class="wow fadeInRight" data-wow-duration="1s">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section><!-- about-section -->
+        
+        <section id="portfolio" class="portfolio-section bg-dark">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 text-center">
+                        <div class="section-heading wow fadeInUp" data-wow-duration="1s">
+                            <h2 class="mb-20">Portfolio</h2>
+                            <p class="mb-20">Some of my recent work.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid">
+                <div class="row portfolio-items">
+                   {{PORTFOLIO_ITEMS}}
+                </div>
+            </div>
+        </section><!-- Portfolio Section -->
+        
+        <section id="aftercare" class="aftercare-section padding">
+            <div class="container-fluid">
+                <div class="row aftercare-area d-flex align-items-center">
+                    <div class="col-lg-4 col-md-4 xs-padding">
+                        <div class="section-heading pdl-80 wow fadeInLeft" data-wow-duration="1s">
+                            <h2 class="mb-20">Aftercare</h2>
+                            <p class="mb-20">To keep your new tattoo looking sharp and healing properly, follow these steps.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-7 col-md-8 xs-padding">
+                        <div class="row aftercare-wrap">
+                            <div class="col-lg-4 col-sm-6 pd-15">
+                                <div class="aftercare-content wow fadeInUp" data-wow-duration="0.6s" data-wow-delay="0.1s">
+                                    <i class="fa fa-shield"></i>
+                                    <h3>Keep it Covered</h3>
+                                    <p>Leave the bandage on for at least 2-4 hours after getting your tattoo.</p>
+                                </div>
+                            </div><!-- Aftercare-1 -->
+                            <div class="col-lg-4 col-sm-6 pd-15">
+                                <div class="aftercare-content wow fadeInUp" data-wow-duration="0.6s" data-wow-delay="0.2s">
+                                    <i class="fa fa-tint"></i>
+                                    <h3>Wash Gently</h3>
+                                    <p>Use lukewarm water and fragrance-free soap to clean your tattoo daily.</p>
+                                </div>
+                            </div><!-- Aftercare-2 -->
+                            <div class="col-lg-4 col-sm-6 pd-15">
+                                <div class="aftercare-content wow fadeInUp" data-wow-duration="0.6s" data-wow-delay="0.3s">
+                                    <i class="fa fa-heart"></i>
+                                    <h3>Moisturize</h3>
+                                    <p>Apply a thin layer of aftercare ointment to keep your tattoo hydrated.</p>
+                                </div>
+                            </div><!-- Aftercare-3 -->
+                            <div class="col-lg-4 col-sm-6 pd-15">
+                                <div class="aftercare-content wow fadeInUp" data-wow-duration="0.6s" data-wow-delay="0.4s">
+                                    <i class="fa fa-ban"></i>
+                                    <h3>Avoid Soaking</h3>
+                                    <p>No swimming, hot tubs, or long baths while your tattoo is healing.</p>
+                                </div>
+                            </div><!-- Aftercare-4 -->
+                            <div class="col-lg-4 col-sm-6 pd-15">
+                                <div class="aftercare-content wow fadeInUp" data-wow-duration="0.6s" data-wow-delay="0.5s">
+                                    <i class="fa fa-sun-o"></i>
+                                    <h3>Stay Out of the Sun</h3>
+                                    <p>Keep your tattoo covered or use SPF 30+ sunscreen to prevent fading.</p>
+                                </div>
+                            </div><!-- Aftercare-5 -->
+                            <div class="col-lg-4 col-sm-6 pd-15">
+                                <div class="aftercare-content wow fadeInUp" data-wow-duration="0.6s" data-wow-delay="0.6s">
+                                    <i class="fa fa-hand-paper-o"></i>
+                                    <h3>No Picking</h3>
+                                    <p>Let scabs and peeling skin fall off naturally to avoid scarring.</p>
+                                </div>
+                            </div><!-- Aftercare-6 -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section><!-- aftercare-section -->
+        
+        <section id="contact" class="contact-section padding">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 text-center">
+                       <div class="section-heading wow fadeInUp" data-wow-duration="1s">
+                           <h2>Contact</h2>
+                           <p>Looking to book time on my calendar, or just say hello? Use this form to get in touch.</p>
+                       </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-10 offset-md-1">
+                        <div class="contact-form wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s">
+                            <form id="ajax_form" class="form-horizontal">
+                                <div class="form-group colum-row row">
+                                    <div class="col-sm-6">
+                                        <input type="text" id="name" name="name" class="form-control" placeholder="Name" required>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="email" id="email" name="email" class="form-control" placeholder="Email" required>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <textarea id="message" name="message" cols="30" rows="5" class="form-control message" placeholder="Message" required></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-md-12 text-center">
+                                        <button id="submit" class="default-btn" type="submit">Send Message</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Social Links Section -->
+                <div class="row">
+                    <div class="col-sm-12 text-center">
+                        <div class="social-links-section wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.4s">
+                            <h3 style="color: #F5F6F5; margin-bottom: 20px;">Connect With Me</h3>
+                            <ul class="social-link">
+                                {{SOCIAL_LINKS}}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section><!-- Contact Section -->
+        
+        <footer class="footer-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 text-center">
+                        <p class="copyright-text">&copy; {{YEAR}} {{ARTIST_NAME}}. All Rights Reserved.</p>
+                        <p class="powered-by">Powered by <a href="https://tattoostudiopro.com" target="_blank" rel="noopener">Tattoo Studio Pro</a></p>
+                    </div>
+                </div>
+            </div>
+        </footer><!-- Footer Section -->
+
+		<a data-scroll href="#header" id="scroll-to-top"><i class="arrow_up"></i></a>
+	
+		<!-- jQuery Lib -->
+        <script src="assets/js/vendor/jquery-1.12.4.min.js"></script>
+		<!-- bootstrap js -->
+		<script src="assets/js/vendor/bootstrap.min.js"></script>
+		<!-- Tether JS -->
+		<script src="assets/js/vendor/tether.min.js"></script>
+		<!-- Slicknav JS -->
+		<script src="assets/js/vendor/jquery.slicknav.min.js"></script>
+		<!-- OWL-Carousel JS -->
+		<script src="assets/js/vendor/owl.carousel.min.js"></script>
+		<!-- Smooth Scroll JS -->
+		<script src="assets/js/vendor/smooth-scroll.min.js"></script>
+		<!-- Venobox JS -->
+		<script src="assets/js/vendor/venobox.min.js"></script>
+		<!-- Text Rotator JS -->
+		<script src="assets/js/vendor/jquery.simple-text-rotator.min.js"></script>
+		<!-- Wow JS -->
+		<script src="assets/js/vendor/wow.min.js"></script>
+		<!-- Google Map JS -->
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBGm_weV-pxqGWuW567g78KhUd7n0p97RY"></script>
+		<!-- Main JS -->
+		<script src="assets/js/main.js"></script>
+
+    </body>
+</html>
