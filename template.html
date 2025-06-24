@@ -46,6 +46,12 @@
         <script>
             // Disable automatic portfolio population since we're using placeholders
             window.disableAutoPortfolio = true;
+            
+            // Override the populatePortfolio function to prevent automatic population
+            window.populatePortfolio = function() {
+                console.log('Portfolio population disabled - using placeholder system');
+                return false;
+            };
         </script>
         
         <script src="assets/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
