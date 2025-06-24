@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="{{DESCRIPTION}}">
+    <meta name="author" content="TattooStudio">
+    <title>{{TITLE}}</title>
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family={{FONT_FAMILY}}:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <style>
+        :root { 
+            --brand-color: {{BRAND_COLOR}}; 
+            --brand-color-light: {{BRAND_COLOR_LIGHT}}; 
+            --heading-font: "{{HEADING_FONT}}"; 
+        }
+        h1, h2, h3, h4, h5, h6 { font-family: var(--heading-font), sans-serif !important; }
+        .navbar-brand .artist-name { font-family: var(--heading-font), sans-serif; color: var(--brand-color); }
+        .hero-content h1 { color: var(--brand-color); }
+        .about-content h2 { color: var(--brand-color); }
+        .section-heading h2 { color: var(--brand-color); }
+        .social-link a { background: var(--brand-color); }
+        .social-link a:hover { background: var(--brand-color-light); }
+    </style>
+</head>
+<body data-spy="scroll" data-target="#navmenu" data-offset="70">
+    <div class="site-preloader-wrap"><div class="spinner"></div></div>
+    
+    <header id="header" class="header-section">
+        <div class="container">
+            <nav class="navbar">
+                <div class="navbar-brand">
+                    <div class="artist-name">{{ARTIST_NAME}}</div>
+                    <div class="artist-location">Tattoo Artist in {{CITY_STATE}}</div>
+                </div>
+                <div class="navbar-center">
+                    <div id="navmenu" class="mainmenu">
+                        <ul class="nav">
+                            <li><a data-scroll class="nav-link active" href="#home">Home</a></li>
+                            <li><a data-scroll class="nav-link" href="#about">About</a></li>
+                            <li><a data-scroll class="nav-link" href="#portfolio">Portfolio</a></li>
+                            <li><a data-scroll class="nav-link" href="#contact">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="navbar-right">
+                    <ul class="nav-social">
+                        {{EMAIL_LINK}}
+                        {{FACEBOOK_LINK}}
+                        {{X_LINK}}
+                        {{INSTAGRAM_LINK}}
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+    
+    <section id="home" class="hero-area">
+        <div class="hero-bg" style="background-image: url('img/hero-background.jpg');"></div>
+        <div class="container">
+            <div class="hero-content text-center">
+                <h1>{{HERO_TITLE}}</h1>
+                <p>{{HERO_SUBTITLE}}</p>
+            </div>
+        </div>
+    </section>
+    
+    <section id="about" class="about-area">
+        <div class="container">
+            <div class="about-content text-center">
+                <h2>{{ABOUT_TITLE}}</h2>
+                <p>{{ABOUT_TEXT}}</p>
+            </div>
+        </div>
+    </section>
+    
+    <section id="portfolio" class="portfolio-area">
+        <div class="container">
+            <div class="section-heading text-center">
+                <h2>Portfolio</h2>
+            </div>
+            <div class="row" id="portfolio-grid">
+                <!-- Portfolio images will be loaded dynamically -->
+            </div>
+        </div>
+    </section>
+    
+    <section id="contact" class="contact-area">
+        <div class="container">
+            <div class="section-heading text-center">
+                <h2>Contact</h2>
+            </div>
+            <div class="social-links text-center">
+                <ul class="social-link">
+                    {{FACEBOOK_SOCIAL}}
+                    {{X_SOCIAL}}
+                    {{INSTAGRAM_SOCIAL}}
+                </ul>
+            </div>
+        </div>
+    </section>
+    
+    <footer class="footer-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 text-center">
+                    <p class="copyright-text">&copy; {{CURRENT_YEAR}} {{ARTIST_NAME}}. All Rights Reserved.</p>
+                    <p class="powered-by">Powered by <a href="https://tattoostudiopro.com" target="_blank" rel="noopener">Tattoo Studio Pro</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="assets/js/vendor/jquery-1.12.4.min.js"></script>
+    <script src="assets/js/vendor/bootstrap.min.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html> 
