@@ -1,0 +1,76 @@
+name: Documentation Sync
+
+on:
+  push:
+    paths: ['docs/**', 'README.md']
+    branches: [main]
+  pull_request:
+    paths: ['docs/**', 'README.md']
+    branches: [main]
+
+jobs:
+  notify-ts-docs:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    
+    steps:
+      - name: Notify TS-Docs
+        run: |
+          # Trigger TS-Docs update via repository dispatch
+          curl -X POST \
+            -H "Accept: application/vnd.github.v3+json" \
+            -H "Authorization: token ${{ secrets.TS_DOCS_TOKEN }}" \
+            https://api.github.com/repos/zadie-studio/TS-Docs/dispatches \
+            -d '{
+              "event_type": "docs-updated",
+              "client_payload": {
+                "repo": "${{ github.repository }}",
+                "commit": "${{ github.sha }}",
+                "author": "${{ github.actor }}",
+                "files": ["docs/", "README.md"]
+              }
+            }'
+        env:
+          TS_DOCS_TOKEN: ${{ secrets.TS_DOCS_TOKEN }}
+
+  validate-docs:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Validate documentation structure
+        run: |
+          # Check if docs directory exists
+          if [ ! -d "docs" ]; then
+            echo "❌ docs/ directory not found"
+            exit 1
+          fi
+          
+          # Check if README.md exists
+          if [ ! -f "README.md" ]; then
+            echo "❌ README.md not found"
+            exit 1
+          fi
+          
+          # Check for required documentation files
+          required_files=("docs/README.md" "docs/api.md" "docs/deployment.md")
+          for file in "${required_files[@]}"; do
+            if [ ! -f "$file" ]; then
+              echo "⚠️  $file not found (recommended)"
+            else
+              echo "✅ $file found"
+            fi
+          done
+          
+          echo "✅ Documentation validation passed"
+      
+      - name: Check for broken links
+        run: |
+          # Install markdown-link-check if available
+          if command -v markdown-link-check &> /dev/null; then
+            find docs/ -name "*.md" -exec markdown-link-check {} \;
+          else
+            echo "ℹ️  markdown-link-check not available, skipping link validation"
+          fi 
