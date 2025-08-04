@@ -1,12 +1,13 @@
+# Template: Add this to individual repositories to trigger TS-Docs updates
+# Save as .github/workflows/docs-sync.yml in each repository
+
 name: Documentation Sync
 
 on:
   push:
     paths: ['docs/**', 'README.md']
-    branches: [main]
   pull_request:
     paths: ['docs/**', 'README.md']
-    branches: [main]
 
 jobs:
   notify-ts-docs:
