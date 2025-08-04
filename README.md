@@ -1,4 +1,4 @@
-# TS-Assets
+# TattttttttoooooStudioz-Assets
 
 Centralized asset management for the TS ecosystem.
 
