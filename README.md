@@ -1,4 +1,4 @@
-# TS-Assets
+# TattttttttoooooStudioz-Assets
 
 Centralized asset management for the TS ecosystem.
 
@@ -15,16 +15,19 @@ TS-Assets provides a centralized location for all brand assets, logos, icons, an
 ## Asset Categories
 
 ### Logos
+
 - Primary TS logos in multiple color schemes (Dark, Light, Mid, White)
 - Logo marks and thumbnails
 - High-resolution versions for print and digital use
 
 ### Icons
+
 - Application icons for mobile and web platforms
 - UI icons for interface elements
 - Social media and platform-specific icons
 
 ### Images
+
 - Brand color palettes and guidelines
 - Marketing materials and promotional graphics
 - Screenshots and mockups
@@ -32,12 +35,15 @@ TS-Assets provides a centralized location for all brand assets, logos, icons, an
 ## Usage
 
 ### Direct URLs
+
 All assets are accessible via GitHub raw URLs:
+
 ```
 https://raw.githubusercontent.com/zadie-studio/TS-Assets/main/images/[filename]
 ```
 
 ### Examples
+
 ```html
 <!-- Dark theme logo -->
 <img src="https://raw.githubusercontent.com/zadie-studio/TS-Assets/main/images/TS-logo-Dark.svg" alt="TS Logo">
@@ -49,6 +55,7 @@ https://raw.githubusercontent.com/zadie-studio/TS-Assets/main/images/[filename]
 ## Documentation
 
 For detailed documentation, see the [docs](./docs/) directory:
+
 - [API Reference](./docs/api.md) - Programmatic access to assets
 - [Deployment Guide](./docs/deployment.md) - Asset management workflow
 - [README](./docs/README.md) - Comprehensive documentation
@@ -63,6 +70,7 @@ For detailed documentation, see the [docs](./docs/) directory:
 ## Automation
 
 This repository is integrated with the TS-Docs automation system. Changes to documentation files will automatically:
+
 1. Trigger validation checks
 2. Update the centralized documentation site
 3. Deploy changes to the live documentation
@@ -70,6 +78,7 @@ This repository is integrated with the TS-Docs automation system. Changes to doc
 ## Support
 
 For questions about assets or the automation system:
+
 - Check the documentation in the `docs/` directory
 - Review the GitHub Actions workflow for automation details
-- Contact the development team for assistance 
+- Contact the development team for assistance
