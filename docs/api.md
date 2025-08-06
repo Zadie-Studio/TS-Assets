@@ -1,5 +1,10 @@
 # TS-Assets API Documentation
 
+<!-- GitHub Source: TS-Assets -->
+
+> 📝 **Source:** [View this file on GitHub](https://github.com/zadie-studio/TS-Assets/blob/main/docs/api.md) • TS-Assets
+
+
 ## Overview
 
 TS-Assets provides programmatic access to brand assets through a simple API structure.

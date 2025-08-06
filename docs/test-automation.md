@@ -1,5 +1,10 @@
 # TS-Assets Automation Test
 
+<!-- GitHub Source: TS-Assets -->
+
+> 📝 **Source:** [View this file on GitHub](https://github.com/zadie-studio/TS-Assets/blob/main/docs/test-automation.md) • TS-Assets
+
+
 This is a test file to verify that the documentation automation system is working correctly.
 
 ## Test Details

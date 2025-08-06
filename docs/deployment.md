@@ -1,5 +1,10 @@
 # TS-Assets Deployment Guide
 
+<!-- GitHub Source: TS-Assets -->
+
+> 📝 **Source:** [View this file on GitHub](https://github.com/zadie-studio/TS-Assets/blob/main/docs/deployment.md) • TS-Assets
+
+
 ## Overview
 
 TS-Assets deployment involves updating assets and ensuring they're properly distributed across the ecosystem.

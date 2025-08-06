@@ -1,5 +1,10 @@
 # TS-Assets Documentation
 
+<!-- GitHub Source: TS-Assets -->
+
+> 📝 **Source:** [View this file on GitHub](https://github.com/zadie-studio/TS-Assets/blob/main/docs/README.md) • TS-Assets
+
+
 This is the documentation for TS-Assets, our asset management system.
 
 ## Overview

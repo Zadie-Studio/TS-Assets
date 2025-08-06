@@ -1,5 +1,10 @@
 # TS-Assets
 
+<!-- GitHub Source: TS-Assets -->
+
+> 📝 **Source:** [View this file on GitHub](https://github.com/zadie-studio/TS-Assets/blob/main/README.md) • TS-Assets
+
+
 Centralized asset management for the TS ecosystem.
 
 ## Overview
